@@ -165,34 +165,38 @@ public class Main {
 		// s'il répond oui, on tire une autre carte et on redemande
 		// sauf si le total après tirage dépasse les 21
 		
+		// Instancier la classe TirageCarte
+		TirageCarte tirage = new TirageCarte(sabot);
+		
 		// Lire une première carte
 		cumulPoint = 0; // Réinitialise le cumul des points
-		int random = Randomize.generer();
-		Carte carte = sabot.getCarte(random - 1);
+		Carte carte = tirage.tirerCarte();
 		cumulPoint += carte.getValeur();
 		System.out.println("Carte " + carte.getNom() + " Total : " + cumulPoint);
 		
 		// On boucle sur la demande utilisateur
 		while (readLine.readBool("Voulez-vous une autre carte ?")) {
-			Carte newCarte = sabot.getCarte(Randomize.generer() - 1);
+			Carte newCarte = tirage.tirerCarte();
 			cumulPoint += newCarte.getValeur();
 			System.out.println("Carte " + newCarte.getNom() + " Total : " + cumulPoint);
 			if (cumulPoint > max) {
 				break;
 			}
 		}
+		
 		System.out.println("Joueur : " + cumulPoint);
 		
+		// J'ai besoin de savoir si la banque peut jouer
 		if (cumulPoint < max) {
 			// Le joueur a fini, le casino peut jouer...
 			int cumulPointBank = 0;
-			Carte carteInitiale = sabot.getCarte(Randomize.generer() - 1);
+			Carte carteInitiale = tirage.tirerCarte();
 			cumulPointBank += carteInitiale.getValeur();
 			System.out.println("Carte " + carteInitiale.getNom() + " Total : " + cumulPointBank);
 			
 			// On boucle sur la demande utilisateur
 			while (readLine.readBool("Banque, voulez-vous une autre carte ?")) {
-				Carte newCarte = sabot.getCarte(Randomize.generer() - 1);
+				Carte newCarte = tirage.tirerCarte();
 				cumulPointBank += newCarte.getValeur();
 				System.out.println("Carte " + newCarte.getNom() + " Total : " + cumulPointBank);
 				if (cumulPointBank > max) {
