@@ -3,6 +3,7 @@ package com.aelion.game;
 import java.util.ArrayList;
 
 import com.aelion.game.helpers.Randomize;
+import com.aelion.game.helpers.ReadLine;
 import com.aelion.game.models.Carte;
 import com.aelion.game.models.Player;
 
@@ -143,6 +144,13 @@ public class Main {
 			cumulPoint += carte.getValeur();
 		}
 		System.out.println("Cumul des points : " + cumulPoint);
+		
+		// Tester la classe ReadLine
+		ReadLine readLine = new ReadLine();
+		readLine.init();
+		String nom = readLine.readLine("Quel est votre nom ?");
+		readLine.end();
+		System.out.println("Bonjour " + nom);
 		
 	}
 	
