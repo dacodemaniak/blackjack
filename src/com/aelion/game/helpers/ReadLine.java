@@ -31,12 +31,13 @@ public class ReadLine {
 	public Boolean readBool(String promptMessage) {
 		Boolean correctResponse = false;
 		String prompt = promptMessage + " (Oui / Non) : ";
+		String userResponse = "";
 		while (!correctResponse) {
-			String userResponse = this.readLine(prompt);
+			userResponse = this.readLine(prompt);
 			correctResponse = this.inBoolResponses(userResponse);
 		}
 		
-		return true;
+		return this.isPositive(userResponse);
 	}
 	
 	private Boolean inBoolResponses(String userResponse) {
@@ -48,5 +49,13 @@ public class ReadLine {
 			}
 		}
 		return inBoolResponse;
+	}
+	
+	private Boolean isPositive(String userResponse) {
+		if (userResponse.toLowerCase().equals("o") || userResponse.toLowerCase().equals("oui")) {
+			return true;
+		}
+		
+		return false;
 	}
 }

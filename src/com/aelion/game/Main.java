@@ -153,7 +153,11 @@ public class Main {
 		System.out.println("Bonjour " + nom);
 		
 		Boolean result = readLine.readBool("Etes-vous majeur ?");
-		
+		if (result) {
+			System.out.println("Okay, tu es majeur");
+		} else {
+			System.out.println("Tu n'es pas majeur");
+		}
 		readLine.end();
 	}
 	
