@@ -158,6 +158,67 @@ public class Main {
 		} else {
 			System.out.println("Tu n'es pas majeur");
 		}
+		
+		
+		// Demander à l'utilisateur après avoir tiré une première carte
+		// s'il veut en tirer une autre
+		// s'il répond oui, on tire une autre carte et on redemande
+		// sauf si le total après tirage dépasse les 21
+		
+		// Lire une première carte
+		cumulPoint = 0; // Réinitialise le cumul des points
+		int random = Randomize.generer();
+		Carte carte = sabot.getCarte(random - 1);
+		cumulPoint += carte.getValeur();
+		System.out.println("Carte " + carte.getNom() + " Total : " + cumulPoint);
+		
+		// On boucle sur la demande utilisateur
+		while (readLine.readBool("Voulez-vous une autre carte ?")) {
+			Carte newCarte = sabot.getCarte(Randomize.generer() - 1);
+			cumulPoint += newCarte.getValeur();
+			System.out.println("Carte " + newCarte.getNom() + " Total : " + cumulPoint);
+			if (cumulPoint > max) {
+				break;
+			}
+		}
+		System.out.println("Joueur : " + cumulPoint);
+		
+		if (cumulPoint <= max) {
+			// Le joueur a fini, le casino peut jouer...
+			int cumulPointBank = 0;
+			Carte carteInitiale = sabot.getCarte(Randomize.generer() - 1);
+			cumulPointBank += carteInitiale.getValeur();
+			System.out.println("Carte " + carteInitiale.getNom() + " Total : " + cumulPointBank);
+			
+			// On boucle sur la demande utilisateur
+			while (readLine.readBool("Banque, voulez-vous une autre carte ?")) {
+				Carte newCarte = sabot.getCarte(Randomize.generer() - 1);
+				cumulPointBank += newCarte.getValeur();
+				System.out.println("Carte " + newCarte.getNom() + " Total : " + cumulPointBank);
+				if (cumulPointBank > max) {
+					break;
+				}
+			}
+			// Résultat...
+			if (cumulPointBank > max) {
+				System.out.println("La banque perd !");
+			} else {
+				if (cumulPoint > cumulPointBank) {
+					System.out.println("Le joueur remporte la mise !");
+				} else if (cumulPoint < cumulPointBank) {
+					System.out.println("La banque remporte la mise !");
+				} else {
+					System.out.println("La mise est annulée");
+				}
+			}
+		} else {
+			if (cumulPoint == max) {
+				System.out.println("Le joueur remporte la mise !");
+			}
+		}
+
+		
+
 		readLine.end();
 	}
 	
