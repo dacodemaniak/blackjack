@@ -3,6 +3,7 @@ package com.aelion.game.models;
 public class Carte {
 	private String nom;
 	private int valeur;
+	
 	public String getNom() {
 		return nom;
 	}
@@ -15,6 +16,4 @@ public class Carte {
 	public void setValeur(int valeur) {
 		this.valeur = valeur;
 	}
-	
-	
 }

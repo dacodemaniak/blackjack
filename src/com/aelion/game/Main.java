@@ -117,6 +117,11 @@ public class Main {
 			}
 		}
 		System.out.println("Le plus jeune : " + plusJeune);
+		
+		// Alimenter le sabot avec les cartes
+		Sabot sabot = new Sabot();
+		sabot.feed();
+		System.out.println(sabot);
 	}
 	
 	private void setPlayers() {

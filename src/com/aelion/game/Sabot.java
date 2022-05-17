@@ -8,7 +8,9 @@ public class Sabot {
 	private ArrayList<Carte> sabot = new ArrayList();
 	
 	public void feed() {
+		
 		for (int i = 1; i < 14; i++) {
+			
 			Carte carte = new Carte();
 			
 			if (i == 1) {
@@ -27,4 +29,17 @@ public class Sabot {
 			this.sabot.add(carte);
 		}
 	}
+
+	@Override
+	public String toString() {
+		String output = "";
+		
+		for (Carte carte : this.sabot) {
+			output += carte.getNom() + " (" + carte.getValeur() + ")\n";
+ 		}
+		
+		return output;
+	}
+	
+	
 }
