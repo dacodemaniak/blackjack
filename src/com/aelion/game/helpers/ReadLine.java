@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class ReadLine {
 	private Scanner scanner;
 	
+	// Tableau avec les réponses possibles pour un booléen
+	private static String[] boolResponses = {"o", "n", "oui", "non"};
+	
 	public void init() {
 		try {
 			this.scanner = new Scanner(System.in);
@@ -23,5 +26,27 @@ public class ReadLine {
 		System.out.print(promptMessage);
 		
 		return this.scanner.nextLine();
+	}
+	
+	public Boolean readBool(String promptMessage) {
+		Boolean correctResponse = false;
+		String prompt = promptMessage + " (Oui / Non) : ";
+		while (!correctResponse) {
+			String userResponse = this.readLine(prompt);
+			correctResponse = this.inBoolResponses(userResponse);
+		}
+		
+		return true;
+	}
+	
+	private Boolean inBoolResponses(String userResponse) {
+		Boolean inBoolResponse = false;
+		
+		for (int i = 0; i < ReadLine.boolResponses.length; i++) {
+			if (userResponse.toLowerCase().equals(ReadLine.boolResponses[i])) {
+				inBoolResponse = true;
+			}
+		}
+		return inBoolResponse;
 	}
 }

@@ -149,9 +149,12 @@ public class Main {
 		ReadLine readLine = new ReadLine();
 		readLine.init();
 		String nom = readLine.readLine("Quel est votre nom ?");
-		readLine.end();
+		
 		System.out.println("Bonjour " + nom);
 		
+		Boolean result = readLine.readBool("Etes-vous majeur ?");
+		
+		readLine.end();
 	}
 	
 	private void setPlayers() {
