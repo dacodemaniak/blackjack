@@ -30,6 +30,14 @@ public class Sabot {
 		}
 	}
 
+	public Carte getCarte(int carteIndice) {
+		return this.sabot.get(carteIndice);
+	}
+	
+	public int getValeurCarte(int carteIndice) {
+		return this.sabot.get(carteIndice).getValeur();
+	}
+	
 	@Override
 	public String toString() {
 		String output = "";

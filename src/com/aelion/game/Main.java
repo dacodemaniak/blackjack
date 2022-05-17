@@ -2,6 +2,8 @@ package com.aelion.game;
 
 import java.util.ArrayList;
 
+import com.aelion.game.helpers.Randomize;
+import com.aelion.game.models.Carte;
 import com.aelion.game.models.Player;
 
 public class Main {
@@ -122,6 +124,26 @@ public class Main {
 		Sabot sabot = new Sabot();
 		sabot.feed();
 		System.out.println(sabot);
+		
+		// Tester les nombres aléatoires (entre 1 et 10)
+		Randomize.setMax(13);
+		for (int i = 0; i < 9; i++) {
+			System.out.println("Nombre aléatoire : "  + Randomize.generer());
+		}
+		
+		// Tirer aléatoirement des cartes dans le sabot jusqu'à ce que le total
+		// atteigne au minimum 21 !
+		int max = 21;
+		int cumulPoint = 0;
+		
+		while (cumulPoint <= max) {
+			int random = Randomize.generer();
+			Carte carte = sabot.getCarte(random - 1);
+			// Cumuler les points
+			cumulPoint += carte.getValeur();
+		}
+		System.out.println("Cumul des points : " + cumulPoint);
+		
 	}
 	
 	private void setPlayers() {
