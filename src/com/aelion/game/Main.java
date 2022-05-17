@@ -183,7 +183,7 @@ public class Main {
 		}
 		System.out.println("Joueur : " + cumulPoint);
 		
-		if (cumulPoint <= max) {
+		if (cumulPoint < max) {
 			// Le joueur a fini, le casino peut jouer...
 			int cumulPointBank = 0;
 			Carte carteInitiale = sabot.getCarte(Randomize.generer() - 1);
@@ -214,6 +214,8 @@ public class Main {
 		} else {
 			if (cumulPoint == max) {
 				System.out.println("Le joueur remporte la mise !");
+			} else {
+				System.out.println("Le joueur perd !");
 			}
 		}
 
