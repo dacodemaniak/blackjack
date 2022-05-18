@@ -33,6 +33,13 @@ public abstract class Jeu {
 		}
 	}
 	
+	/**
+	 * Une méthode abstraite :
+	 * 	- N'a pas de corps {}
+	 * 	- DOIT être implémentée dans les classes filles
+	 */
+	public abstract void run();
+	
 	@Override
 	public String toString() {
 		return this.players.size() + " joueurs dans la liste";
