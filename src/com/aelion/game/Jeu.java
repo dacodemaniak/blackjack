@@ -2,6 +2,8 @@ package com.aelion.game;
 
 import java.util.ArrayList;
 
+import com.aelion.game.exceptions.NotUniquePlayerException;
+import com.aelion.game.exceptions.PlayerExceedsMaxException;
 import com.aelion.game.models.Player;
 
 public abstract class Jeu {
@@ -15,17 +17,19 @@ public abstract class Jeu {
 	 * 	- On ne peut pas avoir deux fois le même joueur,
 	 *  - La liste ne peut pas contenir plus de nbJoueurMax joueurs
 	 * @param player
+	 * @throws NotUniquePlayerException 
+	 * @throws PlayerExceedsMaxException 
 	 */
-	public void addPlayer(Player player) {
+	public void addPlayer(Player player) throws NotUniquePlayerException, PlayerExceedsMaxException {
 		if (players.size() < nbJoueurMax) {
 			if (!this.playerAlreadyInList(player)) {
 				players.add(player);
 			} else {
-				// Problème, le joueur est déjà dans la liste
+				throw new NotUniquePlayerException();
 			}
 			
 		} else {
-			// Problème, on dépasse la capacité de joueurs pour le jeu
+			throw new PlayerExceedsMaxException();
 		}
 	}
 	
