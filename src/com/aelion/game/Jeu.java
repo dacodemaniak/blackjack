@@ -25,11 +25,11 @@ public abstract class Jeu {
 			if (!this.playerAlreadyInList(player)) {
 				players.add(player);
 			} else {
-				throw new NotUniquePlayerException();
+				throw new NotUniquePlayerException(player.getNom() + " déjà dans la liste");
 			}
 			
 		} else {
-			throw new PlayerExceedsMaxException();
+			throw new PlayerExceedsMaxException("La capacité max est de " + nbJoueurMax);
 		}
 	}
 	

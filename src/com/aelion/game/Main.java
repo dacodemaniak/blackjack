@@ -244,25 +244,25 @@ public class Main {
 		try {
 			game.addPlayer(this.players.get(0));
 		} catch (NotUniquePlayerException e) {
-			System.out.println("Le joueur est déjà dans la liste");
+			System.out.println(e.getMessage());
 		} catch (PlayerExceedsMaxException e) {
-			System.out.println("La capacité totale du jeu a été atteinte");
+			System.out.println(e.getMessage());
 		}
 		
 		try {
 			game.addPlayer(this.players.get(1));
 		} catch (NotUniquePlayerException e) {
-			System.out.println("Le joueur est déjà dans la liste");
+			System.out.println(e.getMessage());
 		} catch (PlayerExceedsMaxException e) {
-			System.out.println("La capacité totale du jeu a été atteinte");
+			System.out.println(e.getMessage());
 		}
 		
 		try {
 			game.addPlayer(this.players.get(2));
 		} catch (NotUniquePlayerException e) {
-			System.out.println("Le joueur est déjà dans la liste");
+			System.out.println(e.getMessage());
 		} catch (PlayerExceedsMaxException e) {
-			System.out.println("La capacité totale du jeu a été atteinte");
+			System.out.println(e.getMessage());
 		}
 		System.out.println(game);
 		
