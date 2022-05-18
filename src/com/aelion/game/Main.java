@@ -2,6 +2,7 @@ package com.aelion.game;
 
 import java.util.ArrayList;
 
+import com.aelion.game.blackjack.BlackJack;
 import com.aelion.game.helpers.Randomize;
 import com.aelion.game.helpers.ReadLine;
 import com.aelion.game.models.Carte;
@@ -226,6 +227,16 @@ public class Main {
 		
 
 		readLine.end();
+		
+		// Impossible d'instancier la classe Jeu => new Jeu() n'est pas autorisé
+		// La classe BlackJack peut être instanciée
+		BlackJack game = new BlackJack();
+		game.addPlayer(this.players.get(0));
+		game.addPlayer(this.players.get(0)); // Ca ne devrait pas être possible
+		game.addPlayer(this.players.get(1));
+		game.addPlayer(this.players.get(2)); // Ca ne devrait pas être possible
+		System.out.println(game);
+		
 	}
 	
 	private void setPlayers() {
