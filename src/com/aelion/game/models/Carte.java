@@ -1,8 +1,8 @@
 package com.aelion.game.models;
 
-public class Carte {
-	private String nom;
-	private int valeur;
+public abstract class Carte {
+	protected String nom;
+	protected int valeur;
 	
 	public String getNom() {
 		return nom;

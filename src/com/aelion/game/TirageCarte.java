@@ -25,7 +25,7 @@ public class TirageCarte {
 	}
 	
 	public Carte tirerCarte() {
-		Randomize.setMax(13);
+		Randomize.setMax(this.sabot.getSize());
 		int indice = Randomize.generer();
 		
 		return this.sabot.getCarte(indice - 1);
