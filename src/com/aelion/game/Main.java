@@ -10,6 +10,13 @@ import com.aelion.game.helpers.ReadLine;
 import com.aelion.game.models.Carte;
 import com.aelion.game.models.Player;
 
+
+/**
+ * Exécute votre application...
+ * 
+ * @author Aelion
+ *
+ */
 public class Main {
 	// Tableau des joueurs
 	private ArrayList<Player> players = new ArrayList();

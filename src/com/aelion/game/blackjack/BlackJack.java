@@ -6,9 +6,18 @@ import com.aelion.game.Sabot;
 import com.aelion.game.helpers.ReadLine;
 
 public final class BlackJack extends Jeu {
+	/**
+	 * MAX devient une constante de classe.
+	 * 	- Le MAX ne pourra pas être modifié, il sera toujours égal à 21
+	 */
 	public final int MAX = 21;
+	
 	private ReadLine reader = new ReadLine();
 	
+	/**
+	 * Constructeur de la classe concrète BlackJack
+	 * - Initialise le comportement de la classe
+	 */
 	public BlackJack() {
 		this.nbJoueurMax = 2;
 		this.reader.init();

@@ -1,5 +1,12 @@
 package com.aelion.game.models;
 
+/**
+ * POJO : Plain Old Java Object
+ * - Ne contiennent que des attributs et les getters et setters associés et RIEN d'autre
+ * 
+ * @author Aelion
+ *
+ */
 public class Player {
 	private String nom;
 	private String prenom;
@@ -35,7 +42,4 @@ public class Player {
 				"Prénom : " + this.prenom + "\n" +
 				"Age : " + this.age;
 	}
-	
-	
-	
 }

@@ -30,14 +30,20 @@ public class Jouer {
 		
 		this.firstCarte();
 	}
-	private void firstCarte() {
-		Carte carte = tirage.tirerCarte();
-		cumulPoint += carte.getValeur();
-		System.out.println("Carte " + carte.getNom() + " Total : " + cumulPoint);
-	}
+	
+
 	
 	public void carte() {
-		String message = this.player != null ? this.player.getNom() : "Banque";
+		String message = (this.player != null) ? this.player.getNom() : "Banque";
+		
+		/*
+		if (this.player != null) {
+			message = this.player.getNom();
+		} else {
+			message = "Banque";
+		}
+		*/
+		
 		message += " Tirez une autre carte";
 		
 		// On boucle sur la demande utilisateur
@@ -45,6 +51,8 @@ public class Jouer {
 			Carte newCarte = tirage.tirerCarte();
 			cumulPoint += newCarte.getValeur();
 			System.out.println("Carte " + newCarte.getNom() + " Total : " + cumulPoint);
+			// Il est nécessaire de "caster" l'attribut "game" en "BlackJack"
+			// pour pouvoir accéder à l'attribut MAX spécifique
 			if (cumulPoint > ((BlackJack) game).MAX) {
 				break;
 			}
@@ -53,6 +61,12 @@ public class Jouer {
 	
 	public int getPoint() {
 		return this.cumulPoint;
+	}
+	
+	private void firstCarte() {
+		Carte carte = tirage.tirerCarte();
+		cumulPoint += carte.getValeur();
+		System.out.println("Carte " + carte.getNom() + " Total : " + cumulPoint);
 	}
 	
 }
