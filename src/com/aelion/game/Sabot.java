@@ -15,7 +15,7 @@ public class Sabot {
 	public void feed() {
 		
 		for (int j = 0; j < 4; j++) {
-			Class<?> carteClass = null;
+			Class<?> carteClass = null; // Class est une classe qui permet d'accéder aux données d'une classe
 			
 			if (j == 0) {
 				carteClass = Heart.class;
@@ -50,6 +50,43 @@ public class Sabot {
 
 	}
 
+	public void feedOldSchool() {
+		for (int i = 0; i < 4; i++) {
+			for (int j = 1; j < 14; j++) {
+				Carte carte = null;
+				
+				// Choisir la couleur
+				if (j == 0) {
+					carte = new Heart();
+				} else if (j == 1) {
+					carte = new Spade();
+				} else if ( j == 2) {
+					carte = new Diamond();
+				} else {
+					carte = new Club();
+				}
+				
+				// Définir le noms et valeurs
+				if (j == 1) {
+					carte.setNom("As");
+				} else if (j == 11) {
+					carte.setNom("Valet");
+				} else if (j == 12) {
+					carte.setNom("Dame");
+				} else if (j == 13) {
+					carte.setNom("Roi");
+				} else {
+					carte.setNom(String.valueOf(i));
+				}
+				carte.setValeur(j);
+				
+				this.sabot.add(carte);
+				
+			}
+		}
+	}
+	
+	
 	public Carte getCarte(int carteIndice) {
 		return this.sabot.get(carteIndice);
 	}
@@ -73,6 +110,11 @@ public class Sabot {
 		return output;
 	}
 	
+	/**
+	 * Permet de créer dynamiquement une instance de classe (créer un objet)
+	 * @param className
+	 * @return
+	 */
 	private Carte getInstance(Class<?> className) {
 		try {
 			return (Carte) className.getConstructor().newInstance();

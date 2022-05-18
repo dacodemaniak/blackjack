@@ -1,5 +1,11 @@
 package com.aelion.game.models;
 
+/**
+ * Classe abstraite pour définir toutes les caractéristiques communes de toutes les cartes
+ * 
+ * @author Aelion
+ *
+ */
 public abstract class Carte {
 	protected String nom;
 	protected int valeur;
