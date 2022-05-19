@@ -43,6 +43,17 @@ public class TestDb {
 			System.out.println("No player with id 23");
 		}
 		
+		
+		// Tester l'insertion
+		Player player = new Player();
+		player.setNom("Rolland");
+		player.setPrenom("Xavier");
+		player.setAge(45);
+		
+		player = playerRepository.add(player);
+		
+		System.out.println(player.getId() + " " + player.getNom() + " " + player.getPrenom() + " " + player.getAge());
+		
 		MySQLConnect.close();
 	}
 

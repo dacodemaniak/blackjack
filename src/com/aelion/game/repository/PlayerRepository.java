@@ -1,5 +1,6 @@
 package com.aelion.game.repository;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,9 +14,25 @@ import com.aelion.game.models.Player;
 public class PlayerRepository implements Repository<Player> {
 
 	@Override
-	public Player add(Player entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public Player add(Player entity) throws SQLException {
+		// INSERT INTO player (nom, prenom, age) VALUES ('', '', 0);
+		String query = "INSERT INTO player (nom, prenom, age) VALUES (?, ?, ?);";
+		
+		PreparedStatement statement = MySQLConnect.getInstance().prepareStatement(query);
+		
+		statement.setString(1, entity.getNom());
+		statement.setString(2, entity.getPrenom());
+		statement.setInt(3, entity.getAge());
+		
+		statement.executeUpdate(); // La donnée doit être enregistrée
+		
+		int nextId = this.getLastId();
+		
+		// Mettre à jour l'entité
+		entity.setId(nextId);
+		
+		
+		return entity;
 	}
 
 	@Override
@@ -69,6 +86,18 @@ public class PlayerRepository implements Repository<Player> {
 			players.add(player);
 		}
 		return players;
+	}
+	
+	private int getLastId() throws SQLException {
+		String query = "SELECT id FROM player ORDER BY id DESC LIMIT 1;";
+		
+		Statement statement = MySQLConnect.getInstance().createStatement();
+		
+		ResultSet rs = statement.executeQuery(query);
+		
+		rs.next();
+		
+		return rs.getInt("id");
 	}
 
 }
