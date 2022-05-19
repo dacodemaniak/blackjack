@@ -19,7 +19,7 @@ public class MySQLConnect {
 	private static Connection instance = null;
 	
 	private MySQLConnect() {
-
+		System.out.println("Constructeur de MySQLConnect");
 		try {
 			MySQLConnect.instance = DriverManager.getConnection(  
 					"jdbc:mysql://127.0.0.1:3306/players", 
